@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+ENV.bak/
+venv.bak/
+*.sqlite3
+instance/
+.webassets-cache
+
+# FastAPI/Starlette sessions
+*.log
+
+# VS Code
+.vscode/
+
+# dotenv
+.env
+
+# Alembic (만약 나중에 추가하면 migrations 폴더 제외)
+alembic.ini
+
+
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pytest
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# PostgreSQL volumes (optional if using local volume mount)
+pgdata/
+
+# Node / React / Vite frontend
+node_modules/
+dist/
+frontend/node_modules/
+frontend/dist/
+
+# Logs
+*.log
+logs/
+
+my_venv/

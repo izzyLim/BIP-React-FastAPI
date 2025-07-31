@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+authlib
+sqlalchemy>=2.0
+psycopg2-binary
+python-dotenv
+httpx
+itsdangerous
+authlib
+PyJWT
+python-jose[cryptography]
