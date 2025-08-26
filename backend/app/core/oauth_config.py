@@ -5,7 +5,7 @@ OAUTH_CONFIG = {
     "google": {
         "redirect_uri": os.getenv(
             "GOOGLE_CALLBACK_URL",
-            "http://localhost:8000/auth/google/callback"
+            "http://localhost:8000/api/auth/google/callback"
         )
     }
 }

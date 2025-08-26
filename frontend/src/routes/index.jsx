@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import LoginPage from '../pages/LoginPage'
 import DashboardPage from '../pages/DashboardPage'
 import LandingPage from '../pages/LandingPage'
+import { authAPI } from '../utils/api'
 
 function RequireAuth({ children }) {
   const [user, setUser] = useState(null)
@@ -11,11 +12,8 @@ function RequireAuth({ children }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch('/api/me', { credentials: 'include' })
-        const data = await res.json()
-        if (!data.error) {
-          setUser(data)
-        }
+        const data = await authAPI.getProfile()
+        setUser(data)
       } catch (err) {
         console.error('Error checking auth:', err)
       } finally {

@@ -9,3 +9,12 @@ itsdangerous
 authlib
 PyJWT
 python-jose[cryptography]
+
+# LLM API 연동
+openai>=1.0.0
+anthropic>=0.18.0
+
+# 지표 계산용
+pandas>=1.5.0
+numpy>=1.24.0
+TA-Lib>=0.4.0

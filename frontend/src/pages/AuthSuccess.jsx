@@ -1,28 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { authAPI } from '../utils/api'
 
 export default function AuthSuccess() {
-  const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const [name, setName] = useState('')
   const [loading, setLoading] = useState(true)
-  const token = searchParams.get('token')
 
   useEffect(() => {
-    if (!token) return navigate('/login')
-
-    // 1. 저장
-    localStorage.setItem('access_token', token)
-
-    // 2. 사용자 정보 가져오기 (예: /me)
-    axios
-      .get('http://localhost:8000/auth/me', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(res => {
-        setName(res.data.name || res.data.email)
-        // 3. 잠깐 환영 메시지 보여주고 메인으로
+    // 1. 사용자 정보 가져오기 (쿠키 기반)
+    authAPI.getProfile()
+      .then(data => {
+        setName(data.name || data.email)
+        // 2. 잠깐 환영 메시지 보여주고 메인으로
         setTimeout(() => {
           navigate('/main', { replace: true })
         }, 1500)
@@ -31,7 +21,7 @@ export default function AuthSuccess() {
         navigate('/login')
       })
       .finally(() => setLoading(false))
-  }, [token, navigate])
+  }, [navigate])
 
   if (loading) return <div>로그인 중...</div>
 

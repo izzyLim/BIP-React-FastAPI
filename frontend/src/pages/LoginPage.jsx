@@ -1,8 +1,9 @@
 import AuthLayout from '../layouts/AuthLayout'
+import { authAPI } from '../utils/api'
 
 export default function LoginPage() {
   const handleLogin = () => {
-    window.location.href = 'http://localhost:8000/auth/google'
+    authAPI.loginWithGoogle()
   }
 
   return (
